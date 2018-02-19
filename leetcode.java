@@ -95,7 +95,28 @@ public boolean isSameTree(TreeNode p, TreeNode q) {
 	return false;
 }
 
-
+#17. Letter Combinations of a Phone Number
+//https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+/*
+ For each digit added, remove and copy every element in the queue and add the possible 
+ letter to each element, then add the updated elements back into queue again. 
+ Repeat this procedure until all the digits are iterated.
+*/
+public List<String> letterCombinations(String digits) {
+	LinkedList<String> ans = new LinkedList<String>();
+	if(digits.isEmpty()) return ans;
+	String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+	ans.add("");
+	for(int i = 0; i < digits.length(); i++){
+		int x = Character.getNumericValue(digits.charAt(i));
+		while(ans.peek().length() == i) {
+			String t = ans.remove();
+			for(char s: mapping[x].toCharArray())
+				ans.add(t+s);
+		}
+	}
+	return ans;
+}
 
 
 
