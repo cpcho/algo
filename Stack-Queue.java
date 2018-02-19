@@ -1,5 +1,57 @@
 ###Stacks & Queues###
 
+###Stack Pseudocode###
+
+//isEmpty, push and pop take O(1) time 
+public class Stack{
+
+	public boolean isEmpty(String[] array){
+		if (array.top == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void push(String[] array, int x){
+		array.top = array.top + 1;
+		array[array.top] = x;
+	}
+
+	public void pop(String[] array){
+		if (isEmpty(array)) {
+			System.out.println("underflow");
+		} else {
+			array.top = array.top - 1
+		}
+		return array[array.top + 1]			
+	}
+}
+
+###Queue Pseudocode###
+QUEUE {
+	ENQUEUE(Q, x) {
+		Q[Q.tail] = x;
+		if (Q.tail == Q.length) {
+			Q.tail = 1;
+		}
+		else {
+			Q.tail = Q.tail + 1
+		}
+	}
+	
+	DEQUEUE(Q) {
+		x = Q[Q.head];
+		if Q.head == Q.length {
+			Q.head = 1;
+		} else {
+			Q.head = Q.head + 1;
+		}
+	}
+}
+
+
+
 ###Stack (LIFO)###
 https://stackoverflow.com/a/10852523/5922564
 
