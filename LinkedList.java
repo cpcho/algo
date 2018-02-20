@@ -2,6 +2,36 @@
 //https://stackoverflow.com/a/4066787/5922564
 //https://stackoverflow.com/a/40275367/5922564
 //https://stackoverflow.com/a/9517015/5922564
+
+
+###Pseudocode###
+LIST-SEARCH(L,k)
+//theta(n) in the worst case, since it may have to search the entire list
+	x = L.head;
+	while (x != null && x.key != key) {
+		x = x.next;
+	}
+	return x
+
+LIST-INSERT(L, x)
+//produces "splices" x onto the front of the linked list
+//O(1) running time
+
+// Recall that our attribute notation can cascade, so that
+// L.head.prev denotes the prev attribute of the objct that
+// L.head points to.
+
+	x.next = L.head;
+	if (L.head != null)
+		L.head.prev = x;
+	L.head = x;
+	x.prev = null;
+
+
+
+
+
+###Implementation 1###
 class Link{
 	public int data1;
 	public double data2;
