@@ -6,7 +6,7 @@
 
 ###Pseudocode###
 LIST-SEARCH(L,k)
-//theta(n) in the worst case, since it may have to search the entire list
+// theta(n) in the worst case, since it may have to search the entire list
 	x = L.head;
 	while (x != null && x.key != key) {
 		x = x.next;
@@ -14,8 +14,8 @@ LIST-SEARCH(L,k)
 	return x
 
 LIST-INSERT(L, x)
-//produces "splices" x onto the front of the linked list
-//O(1) running time
+// produces "splices" x onto the front of the linked list
+// O(1) running time
 
 // Recall that our attribute notation can cascade, so that
 // L.head.prev denotes the prev attribute of the objct that
@@ -27,9 +27,20 @@ LIST-INSERT(L, x)
 	L.head = x;
 	x.prev = null;
 
-
-
-
+LIST-DELETE(L, x)
+// O(1) running time without giving a key.
+// If given key, however, worst case would be theta(n) b/c 
+// we must call LIST-SEARCH first to find the element.
+// It removes an element x from a linked list L.
+// It must be given a pointer to x, and it then "splices" x
+// out of the list by updating pointers.
+	if(x.prev != null) {
+		x.prev.next = x.next;
+	} else {
+		L.head = x.next;
+	}
+	if (x.next != null)
+		x.next.prev = x.prev;
 
 ###Implementation 1###
 class Link{
