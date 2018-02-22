@@ -539,8 +539,26 @@ public ListNode plusOne(ListNode head) {
 	}
 	return dummy;
 }
+###OR###
+ListNode add(ListNode root) {
+    if (addOne(root)  == 1)  {
+        ListNode  tmp= new ListNode<>(1);
+        tmp.next = root;  
+        return tmp;
+    }
+    return root;
+}
 
-
+int addOne(ListNode node) {
+      if  (node == null)
+          return 1;
+      if  (addOne(node.next) == 1) { 
+          int rem = (node.val + 1)/10;
+          node.val = (node.val + 1)% 10;
+          return rem;
+      }
+      return 0;
+  }
 
 
 
