@@ -42,7 +42,9 @@ LIST-DELETE(L, x)
 	if (x.next != null)
 		x.next.prev = x.prev;
 
-###Implementation 1###
+###################################
+###Implementation of Linked List###
+###################################
 class Link{
 	public int data1;
 	public double data2;
@@ -66,29 +68,29 @@ class LinkList{
 	//LinkList constructor
 	public LinkList(){
 		//Initialize the firstList is always null.
-		first = null;
+		head = null;
 	}
 	
 	//Returns true if list is empty
 	public boolean isEmpty(){
-		return first == null;
+		return head == null;
 	}
 	
 	//Inserts a new Link at the first of the list
 	public void insert(int d1, double d2){
 		Link link = new Link(d1, d2);
-		link.nextLink = first;
-		first = link;
+		link.nextLink = head;
+		head = link;
 	}
 	
 	//Deletes the link at the first of the list
 	public Link delete(){
-		Link temp = first;
-		if(first == null){
+		Link temp = head;
+		if(head == null){
 			return null;
 			//throw new NoSuchElementException(); //better way
 		}
-		first = first.nextLink;
+		head = head.nextLink;
 		return temp;
 	}
 	
@@ -364,6 +366,40 @@ public class LinkedList {
 
 ###Linked List in Java. Written by Joe James.###
 //https://www.youtube.com/watch?v=ch1uQeu0PVY
+// Node class
+private class Node {
+	private Node nextNode;
+	private int data;
+
+	// 0-arg constructor, 1-arg constructor, 2-arg constructor
+	private Node() { }
+	
+	private Node(int val) {
+		data = val;
+	}
+	
+	private Node(int val, Node next) {
+		data = val;
+		nextNode = next;
+	}
+	
+	private void setData(int val) {
+		this.data = val;
+	}
+	
+	private int getData() {
+		return this.data;
+	}
+	
+	private void setNextNode(Node n) {
+		this.nextNode = n;
+	}
+	
+	private Node getNextNode() {
+		return this.nextNode;
+	}
+}
+
 public class LinkedList {
 	Node root;
 	int size;
@@ -433,36 +469,92 @@ public class LinkedList {
 		return false;
 	}
 }
-// Node class
-private class Node {
-	private Node nextNode;
-	private int data;
 
-	// 0-arg constructor, 1-arg constructor, 2-arg constructor
-	private Node() { }
-	
-	private Node(int val) {
-		data = val;
-	}
-	
-	private Node(int val, Node next) {
-		data = val;
-		nextNode = next;
-	}
-	
-	private void setData(int val) {
-		this.data = val;
-	}
-	
-	private int getData() {
-		return this.data;
-	}
-	
-	private void setNextNode(Node n) {
-		this.nextNode = n;
-	}
-	
-	private Node getNextNode() {
-		return this.nextNode;
-	}
+
+#237. Delete Node in a Linked List
+public void deleteNode(ListNode node) {
+	#O(1) time/space complexity
+	node.val = node.next.val;
+	node.next = node.next.next;
 }
+
+#206. Reverse Linked List - Reverse a singly linked list.
+//https://leetcode.com/problems/reverse-linked-list/discuss/58125/In-place-iterative-and-recursive-Java-solution
+//Iterative way
+//Time complexity: O(n)
+//Space Complexity: O(1)
+public ListNode reverseList(ListNode head){
+	ListNode newHead = null;
+	while (head != null) {
+		ListNode next = head.next;
+		head.next = newHead;
+		newHead = head;
+		head = next;
+	}
+	return newHead;
+}
+
+//Recursive way
+public ListNode reverseList(ListNode head){
+	return reverseListInt(head, null);
+}
+
+private ListNode reverseListInt(ListNode head, ListNode newHead){
+	if(head == null) return newHead;
+	ListNode next = head.next;
+	head.next = newHead;
+	return reverseListInt(next, head);
+}
+
+#369. Plus One Linked List
+// i stands for the most significant digit that is going to 
+// be incremented if there exists a carry.
+// Dummy node can handle cases such as “9->9>-9” automatically
+public ListNode plusOne(ListNode head) {
+	ListNode dummy = new ListNode(0);
+	dummy.next = head;
+	ListNode i = dummy;
+	ListNode j = dummy;
+
+	while (j.next != null) {
+		j = j.next;
+		if (j.val != 9) {
+			i = j;
+		}
+	}
+
+	if (j.val != 9) {
+		j.val++;
+	} else {
+		i.val++;
+		i = i.next;
+		while (i != null) {
+			i.val = 0;
+			i = i.next;
+		}
+	}
+
+	if (dummy.val == 0) {
+		return dummy.next;
+	}
+	return dummy;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

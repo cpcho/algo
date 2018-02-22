@@ -33,50 +33,6 @@ public List<List<Integer>> threeSum(int[] num){
 	return res;
 }
 
-#67. Add Binary
-
-public String addBinary(String a, String b){
-	StringBuilder sb = new StringBuilder();
-	int i = a.length() - 1, j = b.length() - 1, carry = 0;
-	while(i >= 0 || j >= 0){
-		int sum = carry;
-		if (j >= 0) sum += b.charAt(j--) - '0';
-		if (i >= 0) sum += a.charAt(i--) - '0';
-		sb.append(sum % 2);
-		carry = sum/2;
-	}
-	if (carry != 0) sb.append(carry);
-	return sb.reverse().toString();
-}
-
-#206. Reverse Linked List - Reverse a singly linked list.
-//https://leetcode.com/problems/reverse-linked-list/discuss/58125/In-place-iterative-and-recursive-Java-solution
-//Iterative way
-//Time complexity: O(n)
-//Space Complexity: O(1)
-public ListNode reverseList(ListNode head){
-	ListNode newHead = null;
-	while (head != null) {
-		ListNode next = head.next;
-		head.next = newHead;
-		newHead = head;
-		head = next;
-	}
-	return newHead;
-}
-
-//Recursive way
-public ListNode reverseList(ListNode head){
-	return reverseListInt(head, null);
-}
-
-private ListNode reverseListInt(ListNode head, ListNode newHead){
-	if(head == null) return newHead;
-	ListNode next = head.next;
-	head.next = newHead;
-	return reverseListInt(next, head);
-}
-
 #2. Add Two Numbers
 //https://leetcode.com/problems/add-two-numbers/description/
 public ListNode addTwoNumbers(ListNode l1, ListNode l2){
