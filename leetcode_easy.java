@@ -228,24 +228,3 @@ public String addBinary(String a, String b) {
 	if (carry != 0) sb.append(carry);
 	return sb.reverse().toString();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
