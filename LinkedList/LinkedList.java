@@ -3,7 +3,6 @@
 //https://stackoverflow.com/a/40275367/5922564
 //https://stackoverflow.com/a/9517015/5922564
 
-
 ###Pseudocode###
 LIST-SEARCH(L,k)
 // theta(n) in the worst case, since it may have to search the entire list
@@ -63,7 +62,7 @@ class Link{
 }
 
 class LinkList{
-	private Link first;
+	private Link head;
 	
 	//LinkList constructor
 	public LinkList(){
@@ -96,7 +95,7 @@ class LinkList{
 	
 	//Prints list data
 	public void printList(){
-		Link currentLink = first;
+		Link currentLink = head;
 		System.out.print("List: ");
 		while(currentLink != null){
 			currentLink.printLink();
@@ -471,41 +470,6 @@ public class LinkedList {
 }
 
 
-#237. Delete Node in a Linked List
-public void deleteNode(ListNode node) {
-	#O(1) time/space complexity
-	node.val = node.next.val;
-	node.next = node.next.next;
-}
-
-#206. Reverse Linked List - Reverse a singly linked list.
-//https://leetcode.com/problems/reverse-linked-list/discuss/58125/In-place-iterative-and-recursive-Java-solution
-//Iterative way
-//Time complexity: O(n)
-//Space Complexity: O(1)
-public ListNode reverseList(ListNode head){
-	ListNode newHead = null;
-	while (head != null) {
-		ListNode next = head.next;
-		head.next = newHead;
-		newHead = head;
-		head = next;
-	}
-	return newHead;
-}
-
-//Recursive way
-public ListNode reverseList(ListNode head){
-	return reverseListInt(head, null);
-}
-
-private ListNode reverseListInt(ListNode head, ListNode newHead){
-	if(head == null) return newHead;
-	ListNode next = head.next;
-	head.next = newHead;
-	return reverseListInt(next, head);
-}
-
 #369. Plus One Linked List
 // i stands for the most significant digit that is going to 
 // be incremented if there exists a carry.
@@ -559,20 +523,3 @@ int addOne(ListNode node) {
       }
       return 0;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
