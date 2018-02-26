@@ -1,40 +1,3 @@
-#257. Binary Tree Paths
-public List<String> binaryTreePaths(TreeNode root) {
-	List<String> answer = new ArrayList<String>();
-	if (root != null) searchBT(root, "", answer);
-	return answer;
-}
-
-private void searchBT(TreeNode root, String path, List<String> answer) {
-	if (root.left == null && root.right == null) answer.add(path + root.val);
-	if (root.left != null) searchBT(root.left, path + root.val + "->", answer);
-	if (root.right != null) searchBT(root.right, path + root.val + "->", answer);
-}
-#OR#
-public list<String> binaryTreePaths(TreeNode root) {
-	List<String> res = new ArrayList<>();
-	StringBuilder sb = new StrinbBuilder();
-	helper(res, root, sb);
-	return res;
-}
-
-public void helper(List<String> res, TreeNode root, StringBuilder sb) {
-	if(root == null) return;
-	
-	int len = sb.lnegth();
-	sb.append(root.val);
-	if(root.left == null && root.right == null) {
-		res.add(sb.toString());
-	} else {
-		sb.append("->");
-		helper(res, root.left, sb);
-		helper(res, root.right, sb);
-	}
-	sb.setLength(len);
-}
-
-
-
 #720. Longest Word in Dictionary
 #Trie + DFS
 class Solution {
@@ -184,28 +147,6 @@ public int[] anagramMapping(int[] A, int[] B) {
 		}
 	}
 	return res;
-}
-
-#543. Diameter of Binary Tree (DFS)
-//https://leetcode.com/articles/diameter-of-binary-tree/
-//For every node, length of longest path which pass 
-//it = MaxDepth of its left subtree + MaxDepth of its right subtree.
-//Per the problem, the diameter of a binary tree is the length of 
-//the longest path between any two nodes in a tree.
-int max = 0;
-
-public int diameterOfBinaryTree(TreeNode root) {
-	maxDepth(root);
-	return max;
-}
-
-private int maxDepth(TreeNode root) {
-	if (root == null) return 0;
-	int left = maxDepth(root.left);
-	int right = maxDepth(root.right);
-
-	max = Math.max(max, left + right);
-	return Math.max(left, right) + 1;
 }
 
 
