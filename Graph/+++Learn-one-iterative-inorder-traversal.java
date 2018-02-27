@@ -23,18 +23,44 @@ Note: Recursive solution is trivial, could you do it iteratively?*/
 public List<Integer> inorderTraversal(TreeNode root) {
 	List<Integer> list = new ArrayList<>();
 	if (root == null) return list;
-	Stack<TreeNode> stack = new Stack<>();
+	Stack<TreeNode> stack = new Stack<>(); //Create an empty stack
 	while (root != null || !stack.empty()) {
 		while(root != null) {
+			//first node to be visited will be the left one
+			//if it's not null, push to stack and go down the tree to left
 			stack.push(root);
 			root = root.left;
 		}
-		root = stack.pop();
+		//if no left child, pop stack, and proceed the node, 
+		//then let root point to the right
+		root = stack.pop(); //Pop root
 		list.add(root.val);
 		root = root.right;
 	}
 	return list;
 }
+
+#OR
+
+public List<Integer> inorderTraversal(TreeNode root) {
+	List<Integer> list = new ArrayList<>();
+	if(root == null) return list;
+	Stack<TreeNode> s = new Stack<>();
+	TreeNode currNode = root;
+
+	while(currNode != null || !stack.isEmpty()) {
+		if(currNode != null) {
+			s.push(currNode);
+			currNode = currNode.left;
+		} else {
+			TreeNode n = s.pop();
+			list.add(n.val);
+			currNode = n.right;
+		}
+	}
+	return list;
+}
+
 
 /*Now, we can use this structure to find the Kth smallest element in BST.*/
 
