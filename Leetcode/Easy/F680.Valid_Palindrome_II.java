@@ -43,18 +43,24 @@ private boolean isPalin(String s, int l, int r) {
 }
 
 #OR
-
-//Fancy
-//Java O(n) Time O(1) Space
 public boolean validPalindrome(String s) {
-    int l = -1, r = s.length();
-    while (++l < --r) 
-        if (s.charAt(l) != s.charAt(r)) return isPalin(s, l, r+1) || isPalin(s, l-1, r);
+    char[] c = s.toCharArray();
+    int l = 0, r = c.length - 1;
+    while (l < r) {
+        if (c[l] != c[r]) {
+            return isValid(c, l+1, r) || isValid(c, l, r-1); 
+        }
+        l++;
+        r--;
+    }
     return true;
 }
 
-public boolean isPalin(String s, int l, int r) {
-    while (++l < --r) 
-        if (s.charAt(l) != s.charAt(r)) return false;
+private boolean isValid(char[] c, int l, int r) {
+    while (l < r) {
+        if (c[l] != c[r]) return false;
+        l++;
+        r--;
+    }
     return true;
 }
