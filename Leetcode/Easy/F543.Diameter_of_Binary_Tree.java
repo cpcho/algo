@@ -22,22 +22,67 @@ the longest path between any two nodes in a tree.*/
 
 public Solution{
 //Time: O(N). Visiting every node once.
-//Space: O(N), the size of implicit call stack during our depth-first search.
-  int max = 0;
+//Space: O(H), the size of implicit call stack during DFS.
+  int ans = 0;
       
   public int diameterOfBinaryTree(TreeNode root) {
-      maxDepth(root);
-      return max;
+      depth(root);
+      return ans;
   }
 
-  private int maxDepth(TreeNode root) {
+  private int depth(TreeNode root) {
       if (root == null) return 0;
       
-      int left = maxDepth(root.left);
-      int right = maxDepth(root.right);
+      int left = depth(root.left);
+      int right = depth(root.right);
       
-      max = Math.max(max, left + right);
+      ans = Math.max(ans, left + right);
       
       return Math.max(left, right) + 1;
   }
+}
+
+#OR
+/*calculate the depth of a node in the usual way: 
+max(depth of node.left, depth of node.right) + 1.
+
+While we do, a path "through" this node uses 
+1 + (depth of node.left) + (depth of node.right) nodes. 
+Let's search each node and remember the highest number of 
+nodes used in some path. 
+
+The desired length is 1 minus this number.*/
+class Solution {
+  int ans;
+
+  public int diameterOfBinaryTree(TreeNode root) {
+    ans = 1;
+    depth(root);
+    return ans - 1;
+  }
+
+  public int depth(TreeNode node) {
+    if (node == null) return 0;
+    int L = depth(node.right);
+    int R = depth(node.left);
+    ans = Math.max(ans, L+R+1);
+    return Math.max(L, R) + 1;
+  }
+}
+
+#OR
+/*The longest path through the root is simply the sum of 
+the heights of the left and right sub-trees + 1 (for the root node), 
+and the other two can be found recursively:*/
+public int diameterOfBinaryTree(TreeNode root) {        
+  if (root == null) return 0;
+  int rootDiameter = getHeight(root.left) + getHeight(root.right) + 1;
+  int leftDiameter = diameterOfBinaryTree(root.left);
+  int rightDiameter = diameterOfBinaryTree(root.right);
+  return Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
+}
+
+public int getHeight(TreeNode root) {
+  if (root == null) return 0;
+  return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
 }
