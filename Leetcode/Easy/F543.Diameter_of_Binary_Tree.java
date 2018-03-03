@@ -20,26 +20,24 @@ it = MaxDepth of its left subtree + MaxDepth of its right subtree.
 Per the problem, the diameter of a binary tree is the length of 
 the longest path between any two nodes in a tree.*/
 
-int max = 0;
-    
-public int diameterOfBinaryTree(TreeNode root) {
-    maxDepth(root);
-    return max;
-}
+public Solution{
+//Time: O(N). Visiting every node once.
+//Space: O(N), the size of implicit call stack during our depth-first search.
+  int max = 0;
+      
+  public int diameterOfBinaryTree(TreeNode root) {
+      maxDepth(root);
+      return max;
+  }
 
-private int maxDepth(TreeNode root) {
-    if (root == null) return 0;
-    
-    int left = maxDepth(root.left);
-    int right = maxDepth(root.right);
-    
-    max = Math.max(max, left + right);
-    
-    return Math.max(left, right) + 1;
+  private int maxDepth(TreeNode root) {
+      if (root == null) return 0;
+      
+      int left = maxDepth(root.left);
+      int right = maxDepth(root.right);
+      
+      max = Math.max(max, left + right);
+      
+      return Math.max(left, right) + 1;
+  }
 }
-
-/*
-#Time: O(N). Visiting every node once.
-#Space: O(N), the size of implicit call stack 
- during our depth-first search.
-*/
