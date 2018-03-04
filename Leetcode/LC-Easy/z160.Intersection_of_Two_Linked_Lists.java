@@ -30,19 +30,22 @@ Your code should preferably run in O(n) time and use only O(1) memory.*/
  */
 
 
-/*I found most solutions here preprocess linkedlists to get the difference in len.
+/*I found most solutions here preprocess LinkedLists to get the difference in len.
 Actually we don’t care about the “value” of difference, we just want to make sure 
 two pointers reach the intersection node at the same time.
 
-We can use two iterations to do that. 
-First iteration - reset the pointer of one linkedlist to the head of another 
-LinkedList after it reaches the tail node. 
-Second iteration - move two pointers until both point to the same node.
+We can use two iterations to achieve this:
+	-1st iteration: reset the pointer of one LinkedlLst to the head of 
+	another LinkedList after it reaches the tail node. 
+	-2nd iteration: move two pointers until both point to the same node.
 
-Iteration in first iteration will help counteract the difference. 
-If two LinkedLists intersect, the meeting point in second iteration must be the 
-point of intersection. If the two LinkedLists have no intersection at all, the meeting 
-pointer in second iteration must be the tail node of both lists, which is null.*/
+Iteration in 1st iteration will help counteract the difference.
+
+If two LinkedLists intersect, the meeting point in 2nd iteration must be the 
+point of intersection. 
+
+If the two LinkedLists have NO intersection, the meeting pointer in 2nd iteration 
+must be the tail node of both lists, which is null.*/
 
 /*You can prove that: say A length = a + c, B length = b + c. After switching pointer, 
 pointer A will move another (b + c) steps, pointer B will move (a + c) more steps, 
@@ -56,12 +59,40 @@ public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 	ListNode a = headA;
 	listNode b = headB;
 
-	//if a & b have different len, we will stop the loop after second iteration
+	//Stop the loop after 2nd iteration if a and b have different length
 	while (a != b) {
-		//at the end of first iteration, we will reset the pointer to the head of another Linked List
+		//Reset the pointer to the head of another LinkedList at the end of 1st iteration
 		a = a == null? headB : a.next;
 		b = b == null? headA : b.next;
 	}
 
 	return a;
+}
+
+#OR
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+	int lenA = length(headA), lenB = length(headB);
+	// move headA and headB to the same start point
+	while (lenA > lenB) {
+		headA = headA.next;
+		lenA--;
+	}
+	while (lenA < lenB) {
+		headB = headB.next;
+		lenB--;
+	}
+	// find the intersection until end
+	while (headA != headB) {
+		headA = headA.next;
+		headB = headB.next;
+	}
+	return headA;
+}
+private int length(ListNode node) {
+	int len = 0;
+	while (node != null) {
+		node = node.next;
+		length++;
+	}
+	return length;
 }
