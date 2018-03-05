@@ -1,3 +1,4 @@
+//https://stackoverflow.com/questions/3255/big-o-how-do-you-calculate-approximate-it
 //https://youtu.be/7UwDamuC-kU
 
 public static int findNumsOfREpetitions(String s, char c) {
