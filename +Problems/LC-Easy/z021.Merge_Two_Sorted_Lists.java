@@ -20,7 +20,7 @@ Output: 1->1->2->3->4->4*/
 null after first loop, we only need to add it as previous node’s next 
 and no need to add them one by one.*/
 
-/*One thing deserves discussion is whether we should create a new ListNode as a 
+/*One thing that deserves discussion is whether we should create a new ListNode as a 
 convenient way to hold the list. Sometimes, in industrial projects, sometimes 
 it’s not trivial to create a ListNode which might require many resource allocations 
 or inaccessible dependencies (we need to mock them).

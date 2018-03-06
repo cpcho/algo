@@ -1,21 +1,45 @@
 ###Quick Sort###
-//https://youtu.be/Fiot5yuwPAg
-//Given an array of items, sort them in ascending order
-//Left partition-Pivot-Right partition
-//Moving both index pointers at the same time
-//At some point, lower and upper index pointers meet, and this means we are done with the sorting in this iteration
+/*https://youtu.be/Fiot5yuwPAg
+Given an array of items, sort them in ascending order
+Left partition-Pivot-Right partition
+Moving both index pointers at the same time
+At some point, lower and upper index pointers meet, 
+and this means we are done with the sorting in this iteration
 
-//Quick sort is recursive(method that calls itself)
-//Divide-and-Conquer algorithm
-//Very efficient for large data-set
+Recursive
+Divide-and-Conquer algorithm
+For large dataset
 
-//Worst case - O(n^2)
-//Average case - O(n log n)
-//Performance depends largely on pivot selection
-//Randomly chosen pivots ensure O(n log n)
+O(n^2) worst case
+O(n log n) average case 
+Performance depends largely on pivot selection
+Randomly chosen pivots ensure O(n log n)*/
 
-import java.util.Arrays;
-import java.util.Random;
+void quickSort(int[] arr, int left, int right) {
+	int index = partition(arr, left, right);
+	if (left < index - 1) quickSort(arr, left, index - 1); // Sort left half
+	if (index < right) quickSort(arr, index, right); // Sort right half
+}
+
+void partition(int[] arr, int left, int right) {
+	int pivot = arr[left + (right - left)/2];
+	while (left <= right) {
+		// Find element on left that should be on right
+		while (arr[left] < pivot) left++;
+		// Find element on right that should be on left
+		while (arr[right] > pivot) right--;
+		if (left <= right) {
+			int temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			left++;
+			right--;
+		}
+	}
+	return left;
+}
+
+//Joe
 
 public class QuickSort {
 	public void quickSort(int[] A) {
@@ -56,11 +80,4 @@ public class QuickSort {
 		return border-1;
 	}
 	
-	public static void main(String[] args) {
-		QuickSort qs = new QuickSort();
-		int[] A = {9, 0, 1, 3, 4, 5, 2, 9, 8, 7, 6, 5, 9, 1, 0, 9};
-		System.out.println(Arrays.toString(A));
-		qs.quickSort(A);
-		System.out.println(Arrays.toString(A));
-	}
 }
