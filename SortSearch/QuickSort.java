@@ -7,7 +7,7 @@ At some point, lower and upper index pointers meet,
 and this means we are done with the sorting in this iteration
 
 Recursive
-Divide-and-Conquer algorithm
+Divide-and-Conquer
 For large dataset
 
 O(n^2) worst case
@@ -16,6 +16,8 @@ Performance depends largely on pivot selection
 Randomly chosen pivots ensure O(n log n)*/
 
 void quickSort(int[] arr, int left, int right) {
+	if (right - left <= 1) return; // base case
+
 	int index = partition(arr, left, right);
 	if (left < index - 1) quickSort(arr, left, index - 1); // Sort left half
 	if (index < right) quickSort(arr, index, right); // Sort right half
@@ -24,10 +26,11 @@ void quickSort(int[] arr, int left, int right) {
 void partition(int[] arr, int left, int right) {
 	int pivot = arr[left + (right - left)/2];
 	while (left <= right) {
-		// Find element on left that should be on right
+		// Find something too big to be after the pivot
 		while (arr[left] < pivot) left++;
-		// Find element on right that should be on left
+		// Find something too small to be after the pivot
 		while (arr[right] > pivot) right--;
+		// Swap
 		if (left <= right) {
 			int temp = arr[left];
 			arr[left] = arr[right];
