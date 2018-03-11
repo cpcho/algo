@@ -35,7 +35,7 @@ Actually we don’t care about the “value” of difference, we just want to ma
 two pointers reach the intersection node at the same time.
 
 We can use two iterations to achieve this:
-	-1st iteration: reset the pointer of one LinkedlLst to the head of 
+	-1st iteration: reset the pointer of one LinkedList to the head of 
 	another LinkedList after it reaches the tail node. 
 	-2nd iteration: move two pointers until both point to the same node.
 
@@ -65,7 +65,6 @@ public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		a = a == null? headB : a.next;
 		b = b == null? headA : b.next;
 	}
-
 	return a;
 }
 
