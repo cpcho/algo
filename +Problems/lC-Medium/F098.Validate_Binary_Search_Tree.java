@@ -4,7 +4,7 @@ binary search tree (BST).
 
 Assume a BST is defined as follows:
 
-The left subtree of a node contains only nodes with 
+The left subtree of a node contains only nodes with s
 keys less than the node's key.
 
 The right subtree of a node contains only nodes 

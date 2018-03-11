@@ -12,15 +12,14 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.*/
 
 //Priority queue
 //O(N lg K) running time + O(K) memory
+/*use a min oriented priority queue that will store the K-th largest 
+values. The algorithm iterates over the whole input and maintains 
+the size of priority queue.*/
 public int findKthLargest(int[] nums, int k) {
-
 	final PriorityQueue<Integer> pq = new PriorityQueue<>();
 	for(int val : nums) {
 		pq.offer(val);
-
-		if(pq.size() > k) {
-			pq.poll();
-		}
+		if(pq.size() > k) pq.poll();
 	}
 	return pq.peek();
 }
