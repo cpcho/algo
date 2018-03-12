@@ -1,4 +1,4 @@
-#33.Search in Rotated Sorted Array
+#033.Search in Rotated Sorted Array
 /*Suppose an array sorted in ascending order is rotated at some pivot unknown 
 to you beforehand.
 
@@ -29,5 +29,5 @@ public int search(int[] A, int target) {
 			}
 		}
 	}
-	return A[lo] == target ? lo : -1;
+	return (A[lo] == target) ? lo : -1;
 }
