@@ -17,24 +17,18 @@ The number of ways decoding "12" is 2.*/
 /*The basic concept is to build up the number of ways to get to state i from all the prev states less than i (i-1). 
 
 We can do this by initializing a cache with a size of s.length() + 1. We always set waysToDecode[0] to 1 because there is only 1 way to decode an empty string.
-
 We can then build up the number of ways to decode starting from the first value and work our way toward the end.
-
 We only ever need to look at the character at i - 1 because we can’t have values greater than 26, so three digits is never possible. 
 
 There are four possibilities to consider: 
 
 1) The prev value is 0 and the curr value is 0, we can’t make progress, return 0.
-
 2) The curr value is 0, we have to use the prev value, if it is greater than 2, we can’t make progress, 
 return 0, otherwise we have to transition to this state from waysToDecode[i - 1]. 
-
 3) The prev value is 0, we can’t use the prev, so the only way to transition to the curr state is 
 from the prev, so use waysToDecode[i]. 
-
 4) Lastly, both prev and curr can be used so there are two ways to transition to the curr state, thus at 
 waysToDecode[i + 1] we can get here by using all the ways we can get to waysToDecode[i] + all the ways to get to waysToDecode[i - 1].
-
 Keep in mind that the indices are adjusted for the cache because its size differs from the string size.*/
 
 /*O(n) runtime, O(1) space. Use a rolling array to get O(1) space*/

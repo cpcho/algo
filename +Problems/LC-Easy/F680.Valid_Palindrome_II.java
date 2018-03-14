@@ -43,6 +43,7 @@ private boolean isPalin(String s, int l, int r) {
 }
 
 #OR
+
 public boolean validPalindrome(String s) {
     char[] c = s.toCharArray();
     int l = 0, r = c.length - 1;
