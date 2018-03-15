@@ -36,9 +36,8 @@ public int maxProfit(int[] prices) {
 /*
 *maxCur = current maximum value
 *maxSoFar = maximum value found so far
-*/
 
-/*A more clear explanation on why sum of subarray works:
+A more clear explanation on why sum of subarray works:
 
 Suppose we have original array:
 [a0, a1, a2, a3, a4, a5, a6]
