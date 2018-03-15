@@ -6,8 +6,16 @@ given only access to that node. Supposed the linked list is
 the linked list should become 1 -> 2 -> 4 after calling your function.
 */
 
-//O(1) time/space complexity
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 public void deleteNode(ListNode node) {
 	node.val = node.next.val;
 	node.next = node.next.next;
 }
+//O(1) time/space complexity

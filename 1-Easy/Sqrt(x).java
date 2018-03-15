@@ -1,4 +1,5 @@
 #69. Sqrt(x)
+Tag: binary search
 /*Implement int sqrt(int x).
 Compute and return the square root of x.
 
