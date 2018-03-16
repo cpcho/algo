@@ -39,14 +39,14 @@ Then, the answer is a list of D[A[i]] for i = 0, 1, ....*/
 
 public int[] anagramMapping(int[] A, int[] B) {
 
-	Map<Integer, Integer> D = new HashMap();
+	Map<Integer, Integer> map = new HashMap<>();
 	for (int i = 0; i < B.length; i++) {
-		D.put(B[i], i);
+		map.put(B[i], i);
 	}
 	int[] ans = new int[A.length];
 	int t = 0;
 	for (int x: A) {
-		ans[t++] = D.get(x);
+		ans[t++] = map.get(x);
 	}
 	return ans;
 }

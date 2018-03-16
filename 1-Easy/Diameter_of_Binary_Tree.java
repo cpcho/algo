@@ -20,9 +20,13 @@ it = MaxDepth of its left subtree + MaxDepth of its right subtree.
 Per the problem, the diameter of a binary tree is the length of 
 the longest path between any two nodes in a tree.*/
 
-public Solution{
-//Time: O(N). Visiting every node once.
-//Space: O(H), the size of implicit call stack during DFS.
+//https://youtu.be/ey7DYc9OANo
+//https://youtu.be/_O-mK2g_jhI
+
+/*O(N) time, visiting every node once.
+**O(H) space, the size of implicit call stack during DFS.*/
+public class Solution{
+
   int ans = 0;
       
   public int diameterOfBinaryTree(TreeNode root) {
@@ -32,7 +36,7 @@ public Solution{
 
   private int depth(TreeNode root) {
       if (root == null) return 0;
-      
+
       int left = depth(root.left);
       int right = depth(root.right);
       
@@ -45,7 +49,6 @@ public Solution{
 #OR
 /*calculate the depth of a node in the usual way: 
 max(depth of node.left, depth of node.right) + 1.
-
 While we do, a path "through" this node uses 
 1 + (depth of node.left) + (depth of node.right) nodes. 
 Let's search each node and remember the highest number of 
@@ -61,28 +64,29 @@ class Solution {
     return ans - 1;
   }
 
-  public int depth(TreeNode node) {
-    if (node == null) return 0;
-    int L = depth(node.right);
-    int R = depth(node.left);
-    ans = Math.max(ans, L+R+1);
-    return Math.max(L, R) + 1;
+  public int depth(TreeNode root) {
+    if (root == null) return 0;
+    int left = depth(root.left);
+    int right = depth(root.right);
+    ans = Math.max(ans, left+right+1);
+    return Math.max(left, right) + 1;
   }
 }
 
 #OR
 /*The longest path through the root is simply the sum of 
-the heights of the left and right sub-trees + 1 (for the root node), 
-and the other two can be found recursively:*/
+the heights of the left & right sub-trees plus 1 (for the root node), 
+and the other two can be found recursively*/
 public int diameterOfBinaryTree(TreeNode root) {        
   if (root == null) return 0;
-  int rootDiameter = getHeight(root.left) + getHeight(root.right) + 1;
-  int leftDiameter = diameterOfBinaryTree(root.left);
-  int rightDiameter = diameterOfBinaryTree(root.right);
-  return Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
+  int total = getHeight(root.left) + getHeight(root.right) + 1;
+  int left = diameterOfBinaryTree(root.left);
+  int right = diameterOfBinaryTree(root.right);
+  return Math.max(total, Math.max(left, right));
 }
 
 public int getHeight(TreeNode root) {
   if (root == null) return 0;
   return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
 }
+
