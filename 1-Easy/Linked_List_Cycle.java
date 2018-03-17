@@ -6,7 +6,7 @@ Can you solve it without using extra space?*/
 
 /*Hash Table
 O(n) time - Visiting each of the n elements in the list at most once.
-Adding a node to the hash table costs only O(1) time O(n) space. 
+Adding a node to the hash table: O(1) time and O(n) space. 
 The space depends on the number of elements added to the hash table,
 which contains at most n elements*/
 

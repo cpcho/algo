@@ -1,45 +1,31 @@
 #206. Reverse Linked List (Easy)
-#Reverse a singly linked list.
-#Hint: A linked list can be reversed either iteratively or recursively. Could you implement both?
+/*Reverse a singly linked list.
+Hint: A linked list can be reversed either iteratively or recursively.*/
 
-###1.iterative solution###
-//Time complexity: O(n)
-//Space Complexity: O(1)
+/*Iterative - Time O(n), Space O(1)
+https://youtu.be/jY-EUKXYT20*/
 public ListNode reverseList(ListNode head) {
-	ListNode prev = null;
-	ListNode curr = head;
+	if (head == null) return head;
+	ListNode curr = head, prev = null, next = null;
 	while (curr != null) {
 		//Since a node does not have reference to its previous node, 
 		//you must store its previous element beforehand.
-		ListNode nextTemp = curr.next;
+		next = curr.next;
 		curr.next = prev;
 		prev = curr;
-		curr = nextTemp;
+		curr = next;
 	}
 	return prev;
 }
 
-###OR###
+/*Recursive*/
 public ListNode reverseList(ListNode head) {
-	ListNode newHead = null;
-	while (head != null) {
-		ListNode next = head.next;
-		head.next = newHead;
-		newHead = head;
-		head = next;
-	}
-	return newHead;
+	return reverse(head, null);
 }
 
-###2.recursive solution###
-public ListNode reverseList(ListNode head) {
-	return reverseListInt(head, null);
-}
-
-private ListNode reverseListInt(ListNode list, ListNode newHead) {
-	if (head == null)
-		return newHead;
+private ListNode reverse(ListNode list, ListNode newHead) {
+	if (head == null) return newHead;
 	ListNode next = head.next;
 	head.next = newHead;
-	return reverseListInt(next, head);
+	return reverse(next, head);
 }
