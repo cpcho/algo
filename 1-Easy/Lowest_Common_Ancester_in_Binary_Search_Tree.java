@@ -19,6 +19,18 @@ For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6.
 Another example is LCA of nodes 2 and 4 is 2, since a node can be a 
 descendant of itself according to the LCA definition.*/
 
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+       if (root.val > Math.max(p.val, q.val)) {
+           return lowestCommonAncestor(root.left, p, q);
+       } else if (root.val < Math.min(p.val, q.val)) {
+           return lowestCommonAncestor(root.right, p, q);
+       } else {
+           return root;
+       }
+}
+
+#OR
+
 Node lca(Node root, Node n1, Node n2) {
 	if (root.val > Math.max(n1.data, n2.data)) {
 		return lca(root.left, n1, n2); 

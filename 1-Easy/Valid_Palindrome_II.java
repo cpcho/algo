@@ -20,10 +20,12 @@ The maximum length of the string is 50000.*/
 When two chars are not equal, try to skip (pseudo delete) either left one or right one 
 and continue checking.*/
 
+//String
 public boolean validPalindrome(String s) {
     int l = 0, r = s.length() - 1;
     while (l < r && s.charAt(l) == s.charAt(r)) {
-        l++; r--;
+        l++; 
+        r--;
     }
     if (l >= r) return true;
     if (isPalin(s, l + 1, r) || isPalin(s, l, r - 1)) return true;
@@ -43,13 +45,13 @@ private boolean isPalin(String s, int l, int r) {
 }
 
 #OR
-
+//Character
 public boolean validPalindrome(String s) {
     char[] c = s.toCharArray();
     int l = 0, r = c.length - 1;
     while (l < r) {
         if (c[l] != c[r]) {
-            return isValid(c, l+1, r) || isValid(c, l, r-1); 
+            return isPalin(c, l+1, r) || isPalin(c, l, r-1); 
         }
         l++;
         r--;
@@ -57,7 +59,7 @@ public boolean validPalindrome(String s) {
     return true;
 }
 
-private boolean isValid(char[] c, int l, int r) {
+private boolean isPalin(char[] c, int l, int r) {
     while (l < r) {
         if (c[l] != c[r]) return false;
         l++;

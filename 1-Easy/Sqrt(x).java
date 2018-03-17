@@ -19,17 +19,16 @@ Explanation: The square root of 8 is 2.82842..., and since we want to return an 
 
 /*Binary Search
 The sequence 1, 2, ... , n has no duplication.
-
 Near the very end, closest step, before while loop, left = mid = right.
 
-In while, If mid < sqrt(x), left = mid + 1 executed, right pointer is not 
+In while loop, If mid < sqrt(x), left = mid + 1 executed, right pointer is not 
 moving, and right is the answer.
 
 If while, If mid > sqrt(x), right = mid - 1 executed, right pointer shifts 
 left 1, closest to sqrt(x), right is also the answer.
 
-If mid > x/mid, then mid^2 > x; we know mid is bigger than the root of x, 
-so we should try something smaller than mid. Similar for mid < x/mid.*/
+If mid > x/mid (mid^2 > x), we know mid is bigger than the root of x, 
+so we should try something smaller than mid. Si for mid < x/mid.*/
 
 public int sqrt(int x) {
 	int left = 1, right = x;	

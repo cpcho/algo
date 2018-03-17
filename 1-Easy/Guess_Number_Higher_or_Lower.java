@@ -43,7 +43,6 @@ public class Solution extends GuessGame {
 				right = mid - 1;
 			} else {
 				left = mid + 1;
-
 			}
 		}
 		return -1;

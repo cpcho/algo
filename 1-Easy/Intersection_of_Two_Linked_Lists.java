@@ -30,13 +30,13 @@ Your code should preferably run in O(n) time and use only O(1) memory.*/
  */
 
 
-/*I found most solutions here preprocess LinkedLists to get the difference in len.
+/*Most solutions preprocesses LinkedLists to get the difference in len.
 Actually we don’t care about the “value” of difference, we just want to make sure 
 two pointers reach the intersection node at the same time.
 
 We can use two iterations to achieve this:
-	-1st iteration: reset the pointer of one LinkedList to the head of 
-	another LinkedList after it reaches the tail node. 
+	-1st iteration: reset the pointer of one LinkedList to the head of another 
+	LinkedList after it reaches the tail node. 
 	-2nd iteration: move two pointers until both point to the same node.
 
 Iteration in 1st iteration will help counteract the difference.
@@ -55,7 +55,6 @@ Pointer A and B must meet after a + c + b (b + c + a) steps. If c == 0, they mee
 public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 	//O(m+n) time, O(1) space
 	if (headA == null || headB == null) return null; //boundary check
-
 	ListNode a = headA;
 	listNode b = headB;
 
