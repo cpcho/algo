@@ -30,16 +30,14 @@ The coins can form the following rows:
 Because the 4th row is incomplete, we return 3.*/
 
 public int arrangeCoins(int n) {
-	int start = 0;
-	int middle = 0;
-	int end = n;
-	while (start <= end) {
-		middle = start + (end - start) / 2;
+	int left = 0, right = n;
+	while (left <= right) {
+		mid = left + (right - left) / 2;
 		if ((0.5 * mid * mid + 0.5 * mid) <= n) {
-			start = mid + 1;
+			left = mid + 1;
 		} else {
-			end = mid - 1;
+			right = mid - 1;
 		}
 	}
-	return start -1;
+	return left -1;
 }
