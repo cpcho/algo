@@ -1,15 +1,12 @@
 #98. Validate Binary Search Tree (Medium)
-/*Given a binary tree, determine if it is a valid 
-binary search tree (BST).
+/*Given a binary tree, determine if it is a valid binary search tree (BST).
 
 Assume a BST is defined as follows:
 
-The left subtree of a node contains only nodes with s
-keys less than the node's key.
+The left subtree of a node contains only nodes with s keys less than the node's key.
 
-The right subtree of a node contains only nodes 
-with keys greater than the node's key.
-Both the left and right subtrees must also be BST.
+The right subtree of a node contains only nodes with keys greater than the 
+node's key. Both the left and right subtrees must also be BST.
 
 Example 1:
     2

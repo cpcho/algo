@@ -1,5 +1,4 @@
-#114. Flatten Binary Tree to Linked List (Medium)
-
+#114. Flatten Binary Tree to Linked List
 /*Given a binary tree, flatten it to a linked list in-place.
 
 For example,
@@ -24,8 +23,7 @@ The flattened tree should look like:
             \
              6
 Hints:
-If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.
-*/
+If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.*/
 
 /**
  * Definition for a binary tree node.
@@ -36,17 +34,16 @@ If you notice carefully in the flattened tree, each node's right child points to
  *     TreeNode(int x) { val = x; }
  * }
  */
-
-//This is a post-order traverse, and also a reverse of preorder.
+// post-order traverse, and a reverse of pre-order.
 private TreeNode prev = null;
 
 public void flatten(TreeNode root) {
-    if (root == null) return;
-    flatten(root.right);
-    flatten(root.left);
-    root.right = prev;
-    root.left = null;
-    prev = root;
+  if (root == null) return;
+  flatten(root.right);
+  flatten(root.left);
+  root.right = prev;
+  root.left = null;
+  prev = root;
 }
 
 #OR
@@ -55,12 +52,12 @@ public void flatten(TreeNode root) {
 	flatten(root, null);   
 }
 
-private TreeNode flatten(TreeNode root, TreeNode pre) {
-	if (root == null) return pre;
-	pre = flatten(root.right, pre);
-	pre = flatten(root.left, pre);
-	root.right = pre;
+private TreeNode flatten(TreeNode root, TreeNode prev) {
+	if (root == null) return prev;
+	prev = flatten(root.right, prev);
+	prev = flatten(root.left, prev);
+	root.right = prev;
 	root.left = null;
-	pre = root;
-	return pre;
+	prev = root;
+	return prev;
 }

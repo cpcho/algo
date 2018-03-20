@@ -38,8 +38,7 @@ public int firstBadVersion(int n) {
 
 To get the middle value, but this can cause OVERFLOW!
 
-when start and end are all about INT_MAX, 
-then (start+end) of course will be overflow!
+when start and end are all about INT_MAX, then (start+end) of course will be overflow!
 
 To avoid the problem we can use
-  mid =  start+(end-start)/2;*/
+mid =  start+(end-start)/2;*/

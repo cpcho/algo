@@ -20,7 +20,7 @@ public boolean search(int[] nums, int target) {
 
 		// if left part is sorted.
 		if (nums[start] < nums[mid]) {
-			if (target < nums[start] || target > nums[mid]) {
+			if (nums[start] < target || target > nums[mid]) {
 				start = mid + 1; //target is in rotated part
 			} else {
 				end = mid - 1;
