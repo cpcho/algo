@@ -15,16 +15,14 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 Note: The length of path between two nodes is represented by 
 the number of edges between them.*/
 
-/*For every node, length of longest path which pass 
-it = MaxDepth of its left subtree + MaxDepth of its right subtree.
-Per the problem, the diameter of a binary tree is the length of 
-the longest path between any two nodes in a tree.*/
+/*For every node, length of longest path which pass it = MaxDepth of its 
+left subtree + MaxDepth of its right subtree. Per the problem, the diameter of a
+binary tree is the length of the longest path between any two nodes in a tree.*/
 
 //https://youtu.be/ey7DYc9OANo
 //https://youtu.be/_O-mK2g_jhI
 
-/*O(N) time, visiting every node once.
-**O(H) space, the size of implicit call stack during DFS.*/
+/*O(N) time, visiting every node once. O(H) space, the size of implicit call stack during DFS.*/
 public class Solution{
 
   int ans = 0;
@@ -68,15 +66,15 @@ class Solution {
     if (root == null) return 0;
     int left = depth(root.left);
     int right = depth(root.right);
-    ans = Math.max(ans, left+right+1);
+    ans = Math.max(ans, left + right + 1);
     return Math.max(left, right) + 1;
   }
 }
 
 #OR
-/*The longest path through the root is simply the sum of 
-the heights of the left & right sub-trees plus 1 (for the root node), 
-and the other two can be found recursively*/
+/*The longest path through the root is simply the sum of the heights of the 
+left & right sub-trees plus 1 (for the root node), and the other two can be 
+found recursively*/
 public int diameterOfBinaryTree(TreeNode root) {        
   if (root == null) return 0;
   int total = getHeight(root.left) + getHeight(root.right) + 1;
@@ -89,4 +87,3 @@ public int getHeight(TreeNode root) {
   if (root == null) return 0;
   return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
 }
-

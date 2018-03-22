@@ -29,7 +29,7 @@ public List<String> letterCombinations(String digits) {
 
 		while(queue.peek().length() == i) {
 			String row = queue.remove();
-			for(char l: buttons[x].toCharArray())
+			for (char l : buttons[x].toCharArray())
 				queue.add(row + l);
 		}
 	}
@@ -72,4 +72,4 @@ If the input is “9” you will get 4 results.
 If the input is “99” you will get 16 results, etc. 
 At each digit, we take the previous results, 
 and for EACH letter corresponding to the digit, 
-we append the letter to the previous results.s*/
+we append the letter to the previous results.*/

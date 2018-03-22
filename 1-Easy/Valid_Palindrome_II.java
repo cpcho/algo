@@ -15,7 +15,6 @@ Note:
 The string will only contain lowercase characters a-z. 
 The maximum length of the string is 50000.*/
 
-
 /*Use two pointers (one from left and one from right) to check if s is palindrome. 
 When two chars are not equal, try to skip (pseudo delete) either left one or right one 
 and continue checking.*/
@@ -50,9 +49,7 @@ public boolean validPalindrome(String s) {
     char[] c = s.toCharArray();
     int l = 0, r = c.length - 1;
     while (l < r) {
-        if (c[l] != c[r]) {
-            return isPalin(c, l+1, r) || isPalin(c, l, r-1); 
-        }
+        if (c[l] != c[r]) return isPalin(c, l+1, r) || isPalin(c, l, r-1);
         l++;
         r--;
     }

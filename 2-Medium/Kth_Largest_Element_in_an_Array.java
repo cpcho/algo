@@ -1,8 +1,6 @@
-#215. Kth Largest Element in an Array (medium)
-
+215. Kth Largest Element in an Array
 /*Find the kth largest element in an unsorted array. 
-Note that it is the kth largest element in the sorted order, 
-not the kth distinct element.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
 For example,
 Given [3,2,1,5,6,4] and k = 2, return 5.
@@ -10,16 +8,15 @@ Given [3,2,1,5,6,4] and k = 2, return 5.
 Note: 
 You may assume k is always valid, 1 ≤ k ≤ array's length.*/
 
-//Priority queue
-//O(N lg K) running time + O(K) memory
-/*use a min oriented priority queue that will store the K-th largest 
-values. The algorithm iterates over the whole input and maintains 
-the size of priority queue.*/
+// Priority queue
+/*O(N log k) running time + O(K) memory
+Use a min-oriented priority queue to store the K-th largest values. The algorithm iterates over the whole input and 
+maintains the size of priority queue.*/
 public int findKthLargest(int[] nums, int k) {
 	final PriorityQueue<Integer> pq = new PriorityQueue<>();
-	for(int val : nums) {
-		pq.offer(val);
-		if(pq.size() > k) pq.poll();
+	for (int n : nums) {
+		pq.offer(n);
+		if (pq.size() > k) pq.poll();
 	}
 	return pq.peek();
 }
@@ -29,8 +26,7 @@ public int findKthLargest(int[] nums, int k) {
 //Selection algorithm
 //O(N) best case / O(N^2) worst case running time + O(1) memory
 public int findKthLargest(int[] nums, int k) {
-
-	shuffle(nums); //O(N) guaranteed running time + O(1) space
+	shuffle(nums); // O(N) guaranteed running time + O(1) space
 	k = nums.length - k;
 	int lo = 0;
 	int hi = nums.length - 1;

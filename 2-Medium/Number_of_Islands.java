@@ -21,8 +21,8 @@ Answer: 3*/
 
 /*Just drown every island - one by one!!*/
 
-private int y; // Height of the given grid
 private int x; // Width of the given grid
+private int y; // Height of the given grid
 private char[][] g; // The given grid, stored to reduce recursion memory usage
 
 public int numIslands(char[][] grid) {
@@ -36,8 +36,7 @@ public int numIslands(char[][] grid) {
     if (y == 0) return 0;
     x = g[0].length;
 
-    // Iterate over the entire given grid
-    for (int i = 0; i < y; i++) {
+    for (int i = 0; i < y; i++) { // Iterate over the entire given grid
     	for (int j = 0; j < x; j++) {
     		if (g[i][j] == '1') {
     			dfs(i, j);
@@ -48,8 +47,7 @@ public int numIslands(char[][] grid) {
     return count;
 }
 
-// i: row index, j: column index
-void dfs(int i, int j) {
+void dfs(int i, int j) { // i: row index, j: column index
 
 	// Check for invalid indices and sites that aren't land
 	if (i < 0 || j < 0 || i >= y || j >= x || g[i][j] != '1') return;

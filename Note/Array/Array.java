@@ -57,21 +57,16 @@ public class ArrayStructures {
 public String linearSearch(int value) {
 	boolean valueInArray = false;
 	String indexWithValue = "";
-	System.out.print("The value was found in the following: ");
-	
 	for(int i = 0; i < arraySize; i++) {
 		if(theArray[i] == value) {
-			
 			valueInArray = true;
 			System.out.print(i + " ");
 			indexWithValue+= i + " ";
 		}
 	}
 	if(!valueInArray) {
-	
 		indexWithValue = "None";
 		System.out.print(indexWithValue);
-		
 	}
 	System.out.print();
 	return indexWithValue;	

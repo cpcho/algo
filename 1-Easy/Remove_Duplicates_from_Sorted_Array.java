@@ -13,10 +13,9 @@ Your function should return length = 2, with the first two elements
 of nums being 1 and 2 respectively. It doesn't matter what you leave beyond 
 the new length.
 
-O(n) time, n is the length of array, each of two pointers travers at most n steps.
+O(n) time, n is the length of array, each of two pointers traverse at most n steps.
 O(1) space
 */
-
 
 public int removeDuplicates(int[] nums) {
 	int i = 0;

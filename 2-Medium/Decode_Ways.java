@@ -12,6 +12,26 @@ For example, Given encoded message "12", it could be decoded as "AB" (1 2) or "L
 
 The number of ways decoding "12" is 2.*/
 
+public int numDecodings(String s) {
+	int n = s.length();
+	if (n == 0) return 0;
+
+	int[] memo = new int[n+1];
+	memo[n] = 1; // when the string is empty, there is only one answer.
+	memo[n-1] = s.charAt(n-1) != '0' ? 1 : 0; // when there is only one character in the string, if this character is not 0, there will be an answer, or there will be no answer. 
+
+	for (int i = n - 2; i >= 0; i--) {
+		if (s.charAt(i) == '0') // if there are 0s in the string, we should skip it and look at the next character because there is no answer when the string begins with 0.
+			continue;
+		else
+			memo[i] = (Integer.parseInt(s.substring(i, i+2)) <= 26) ? memo[i+1] + memo[i+2] : memo[i+1]; 
+			/*When we add a letter from the end of the string, if the first two letters <=26, we can get memo[n]= memo[n+1] + memo[n+2].
+			If the string is “123xxxx” and we know all the result from 2. Because 12<26, we can make this string either"12"+“3xxxx” or 
+			1+23xxxx which is exactly memo[n] = memo[n-1] + memo[n-2]. If the String is"32xxxx" memo[n] = memo[n+1].*/
+	}
+	return memo[0];
+}
+
 /*The basic concept is to build up the number of ways to get to state i from all the prev states less than i (i-1). 
 
 We can do this by initializing a cache with a size of s.length() + 1. We always set waysToDecode[0] to 1 because there is only 1 way to decode an empty string.
@@ -67,7 +87,7 @@ public int numDecodings(String s) {
 }
 
 private int dfs(String s, int i) {
-	if (i == s.length()) return 1; //return 1 if whole string has been decoded.
+	if (i == s.length()) return 1; // return 1 if whole string has been decoded.
 	if (s.charAt(i) == '0') return 0;
 	if (i < s.length() - 1 && Integer.valueOf(s.substring(i, i+2)) < 26) {
 		return dfs(s, i+1) + dfs(s, i+2);

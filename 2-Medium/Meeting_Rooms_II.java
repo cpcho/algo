@@ -6,10 +6,9 @@ For example,
 Given [[0, 30],[5, 10],[15, 20]],
 return 2.*/
 
-/*two sorted array of start time and end time. 
-Two pointers to iterator start array and end array. 
-Iterate the time line, the current time active meeting is num of 
-start minus num of end. Since need sort, still O(nlog(n)) */
+/*two sorted array of start time and end time. Two pointers to iterator start array and end array. 
+Iterate the time line, the current time active meeting is (start num - end num).
+Since need sort, still O(nlog(n)) */
 public int minMeetingRooms(Interval[] intervals) {
 	int n = intervals.length;
 	int[] start = new int[n];

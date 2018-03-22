@@ -54,33 +54,28 @@ public void remove(String s, List<String> ans, int last_i, int last_j, char[] pa
 		ans.add(reversed);
 }
 /*if (par[0] == '(') 
-This is used to check if the current ‘s’ is reversed version, if it is not, 
-that means still need to check the reversed string to make it legal, 
-if it is reversed version ‘s’, then you’ve checked both ordered and reverse ordered.
-What you have now is legal pattern.*/
+This is used to check if the current ‘s’ is reversed version, if it is not, that means still need to check the reversed string to make it legal, 
+if it is reversed version ‘s’, then you’ve checked both ordered and reverse-ordered. What you have now is legal pattern.
 
-/*
-The program only generates valid answers. Every path in the search generates one valid answer. 
-The whole search space is a tree with k leaves. The number of nodes in the tree is roughly O(k). 
-But this is not always true, for example a degenerated tree.
+The program only generates valid answers. Every path in the search generates one valid answer. The whole search space is a tree with k leaves. 
+The number of nodes in the tree is roughly O(k). But this is not always true, for example a degenerated tree.
 
-To generate one node it requires O(n) time from the string concatenation among other things. 
-So roughly O(nk). Accurately O(nm) where m is the total “number of recursive calls” or “nodes 
-in the search tree”. Then you need to relate m to n in the worst case.
+To generate one node it requires O(n) time from the string concatenation among other things. So roughly O(nk). Accurately O(nm) where m is the 
+total “number of recursive calls” or “nodes in the search tree”. Then you need to relate m to n in the worst case.
 
-I wouldn’t worry too much about the accurate complexity analysis of this problem. It would require 
-more mathematics than an interview cares.
+I wouldn’t worry too much about the accurate complexity analysis of this problem. It would require more mathematics than an interview cares.
 
 1. last_i and last_ j
-	I once thought last_ j is not necessary and did not understand dietpepsi and another colleague(on first page)'s explanation on it, but I was wrong. 
-	So back to the naïve core content of this algo, its essential advantage is at process redundant ")" from left to right, process redundant "(" from right to left, 
-	I think everyone understand this. Then let’s focus on 2 contiguous recursions. Let’s take ‘())())’ as an example:
-	first recursion, last_ j = 1, the string is ())()), after deleting it the string is ()()). I once thought that since s[0] and s[1] is valid now like ()()), 
-	we don’t need to change s[0]+s[1] in later steps. But in fact it is not true, s[1] is still possible to be deleted in later steps, 
-	and the right logic should be: once a ")" is deleted, we should restart from i=0, j=0 to look for the invalid ")" and do the recursion, and check those duplicates, 
-	this is the right way to find all possible answers, just like in the above example, in the second recursion in principle we should start looking for redundant “)” from i=0, j=0, and take care there will be duplicates { which means that working on ()()) and find i=4, j=1, string is like ()()), and then delete this s[j] }. If we start from i=2, j=2, some answers will be missed. Fortunately, we don't need to restart from i=0, j=0 for each recursion, since all possible transformation before last_ j has been covered in previous recursions, { but all possible transformations in range [ last_ j, last_i ] are not, take another example, ()()r)), first recursion can cover ()()r)), ()()r)), but won’t cover ()()r)) } , we just need to restart from j = last_ j. That’s why last_ j is necessary. On the other hand, value i can restart from last_i, too. I kind of like thinking of that the reason of choosing i and j are independent to each …
-
-2. next recursion starts from i, not i+1
-as mentioned by somebody before, since 1 char is deleted, index i is automatically advanced one position.
-
-These two points are kind of tricky to me, and hope this can help somebody else. Finally, genius solution!*/
+	I once thought last_j is not necessary but I was wrong. Its essential advantage is at process redundant ")" from left to right, 
+	process redundant "(" from right to left. Then let’s focus on 2 contiguous recursions. 	Let’s take ‘())())’ as an example: first recursion, 
+	last_j = 1, the string is ())()), after deleting it the string is ()()). I once thought that since s[0] and s[1] is valid now like ()()), we don’t 
+	need to change s[0]+s[1] in later steps. But it is not true as s[1] is still possible to be deleted in later steps, and the right logic should be: 
+	once a ")" is deleted, we should restart from i=0, j=0 to look for the invalid ")" and do the recursion, and check those duplicates, this is the right way 
+	to find all possible answers, just like in the above example, in the second recursion in principle we should start looking for redundant “)” from i=0, j=0, 
+	and take care there will be duplicates { which means that working on ()()) and find i=4, j=1, string is like ()()), and then delete this s[j] }. 
+	If we start from i=2, j=2, some answers will be missed. Fortunately, we don't need to restart from i=0, j=0 for each recursion, since all possible 
+	transformation before last_j has been covered in previous recursions, { but all possible transformations in range [ last_ j, last_i ] are not, 
+	take another example, ()()r)), first recursion can cover ()()r)), ()()r)), but won’t cover ()()r)) } , we just need to restart from j = last_j. 
+	That’s why last_j is necessary. On the other hand, value i can restart from last_i, too. I kind of like thinking of that the reason of choosing i and j are 
+	independent to each …
+2. next recursion starts from i, not i+1 since 1 char is deleted, index i is automatically advanced one position.*/
