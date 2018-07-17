@@ -1,7 +1,4 @@
-/*
-* Permutation
-*/
-
+//Permutation
 public class StringFindAllPermutation {
 	public static Set<String> permutationFinder(String str) {
 		if (str == null) {
@@ -29,26 +26,22 @@ public class StringFindAllPermutation {
 	}
 }
 
-/*
-* Write a method that will remove given character from the String
-*/
 
+//Write a method that will remove given character from the String
 private static String removeChar(String str, char c) {
 	if (str == null) return null;
 	return str.replaceAll(Character.toString(c), "");
 }
 
-/*
-* Write a method to check if input String is Palindrome?
-*/
 
+//Write a method to check if input String is Palindrome?
 private static boolean isPalindrome(String str) {
 	if (str == null) return false;
 	StringBuilder strBuilder = new StringBuilder(str);
 	strBuilder.reverse();
 	return strBuilder.toString().equals(str);
 }
-// or
+//Write a method to check if input String is Palindrome (2nd method)
 
 private static boolean isPalindromeString(String str) {
 	if (str == null) return null;
@@ -60,6 +53,7 @@ private static boolean isPalindromeString(String str) {
 	return true;
 }
 
+// Valid parenthesis
 public boolean isValid(String s) {
 	
 	if (s.length() % 2 == 1) return false;
@@ -91,6 +85,7 @@ public boolean isValid(String s) {
 	return stack.isEmpty();
 }
 
+// Square root
 public int sqrt(int x) {
 	int left = 1, right = x;
 	while (left <= right) {
@@ -106,6 +101,8 @@ public int sqrt(int x) {
 	return right;
 }
 
+
+// moveZeroes
 public void moveZeroes(int[] nums) {
 
 	int index = 0;
@@ -132,20 +129,7 @@ for (int i = 0; i < len; ++i) {
 	}
 }
 
-String str = "Hello World";
-int len = str.length();
-Map<Character, Integer> numChars = new HashMap<>(Math.min(len, 26));
-for (int i = 0; i < len; ++i) {
-	char charAt = str.charAt(i);
-	if (!numChars.containsKey(charAt)) {
-		numChars.put(charAt, 1);
-	} else {
-		numChars.put(charAt, numChars.get(charAt) + 1);
-	}
-}
-
-
-
+// max Profit within a period of times.
 public int maxProfit(int[] prices) {
 	int maxCur = 0;
 	int maxSoFar = 0;
