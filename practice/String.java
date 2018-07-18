@@ -83,8 +83,6 @@ class Helloworld {
 		// 3. Recursion
 		System.out.println(reverseString(original));
 
-
-
 	}
 }
 
@@ -100,6 +98,57 @@ class StringPT2 {
 		System.out.println(hiThere.compareTo("hi there!"));
 		System.out.println(hiThere.compareTo("Hi there!"));
 		System.out.println(hiThere.compareTo(new String("Hi there")))
+
+		// String[] split(String regex)
+		String story = "She goes to the store. web-master";\
+
+		// Q: How many words are in the document?
+		String[] wordList = story.split(" ");
+		System.out.println(worList);
+		for (int i = 0; i < wordList.length; i++) {
+			System.out.print(wordList[i] + " | ");
+		}
+
+		// boolean startsWith(String prefix)
+		String shells = "Sean sells seashells at the seashore";
+		System.out.println(shells.startsWith("se")); // false
+		// Q: How many words in a given document start with "se"?
+		// Q: what is a word?
+
+		// 1. toLowerCase()
+		// 2. split
+		// 3. Analysis
+		String[] shellList = (shells.toLowerCase()).split(" ");
+		int count = 0;
+		for (String s :L shellList) {
+			if (s.startsWith("se")) {
+				count++;
+			}
+		}
+		System.out.println(count);
+
+		///
+
+		// String trim()
+		String movies = "       I am going to the movies   b    ";
+		// Outer
+		System.out.println(movies.trim());
+		// Inner
+		String cleaned = movies.replaceAll("\\s+", " ");
+		System.out.println(cleaned);
+
+		// static String valueOf (primitive x)
+		String num = String.valueOf(5);
+		String character = String.valueOf('a');
+		String bool = String.valueOf(rue);
+		System.out.println(num);
+		System.out.println(character);
+		System.out.println(bool);
+
+		// Important!!!
+		Integer userInt = Integer.valueOf(num);
+		Boolean userBool = Boolean.valueOf(bool);
+		Character c = character.charAt(0);
 
 	}
 }
